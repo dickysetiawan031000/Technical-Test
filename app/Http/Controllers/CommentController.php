@@ -128,6 +128,9 @@ class CommentController extends BaseController
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        //return response
+        return $this->sendResponse([], 'Comment Deleted Successfully');
     }
 }
