@@ -26,9 +26,11 @@ Route::post('/login', [ApiAuthController::class, 'login']);
 
 //Protected Route
 Route::middleware('auth:api', 'checkRole:1')->group(function () {
-    Route::resource('news', NewsController::class);
     Route::resource('comment', CommentController::class);
+    Route::resource('news', NewsController::class);
 });
 Route::middleware('auth:api', 'checkRole:2')->group(function () {
     Route::resource('comment', CommentController::class);
+    Route::get('/news', [NewsController::class, 'index']);
+    // Route::resource('news', NewsController::class);
 });
